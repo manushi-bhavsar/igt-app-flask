@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/style_instruction.css" />
+    <link rel="stylesheet" href="../static/css/style_final.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        background: none;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      menu,
+      ol,
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .radar-container {
+        margin: 50px auto;
+      }
+
+
+      #deckRadarChart {
+        margin: 0 auto;
+        display: block;
+      }
+
+
+    </style>
+    <title>Results</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="group-14">
+        <img class="star" src="../static/images/star0.svg" />
+        <img class="rectangle-29" src="../static/images/rectangle-290.svg" />
+      </div>
+
+      <div class="radar-container">
+        <div class="chart-box">
+          <div class="heading">Your Deck Selection Profile</div>
+          <canvas id="deckRadarChart"></canvas>
+          <p id="deckSummary" class="summary-text"></p> 
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const deckChoices = {{ deck_choices | tojson | safe }};
+      console.log("Deck Choices:", deckChoices);
+
+      const labels = ['Deck A', 'Deck B', 'Deck C', 'Deck D'];
+      const dataValues = [
+        deckChoices['A'] || 0,
+        deckChoices['B'] || 0,
+        deckChoices['C'] || 0,
+        deckChoices['D'] || 0
+      ];
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Deck Choices',
+          data: dataValues,
+          fill: true,
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(54, 162, 235, 1)'
+        }]
+      };
+
+      const config = {
+        type: 'radar',
+        data: data,
+        options: {
+          responsive: true,
+          scales: {
+            r: {
+              suggestedMin: 0,
+              suggestedMax: 20
+            }
+          }
+        }
+      };
+
+      new Chart(document.getElementById('deckRadarChart'), config);
+
+      // 🎯 Summary message logic
+      const summaryText = document.getElementById("deckSummary");
+      const deckMap = {
+        'A': 'Reckless Gambler',
+        'B': 'Calculated Risk-Taker',
+        'C': 'Fearful Spender',
+        'D': 'Risk-Averse Analyst'
+      };
+
+      const maxIndex = dataValues.indexOf(Math.max(...dataValues));
+      const dominantDeck = labels[maxIndex].split(" ")[1]; 
+      const role = deckMap[dominantDeck];
+
+      summaryText.textContent = `You gravitated most toward Deck ${dominantDeck} — a ${role} strategy.`;
+    </script>
+  </body>
+</html>

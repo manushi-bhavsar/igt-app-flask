@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/gain.css" />
+    <style>
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        background: none;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      menu,
+      ol,
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .value {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #333;
+      }
+
+      .rectangle-2 {
+        height: 100%;
+        background-color: #4caf50;
+        transition: width 0.5s ease;
+      }
+    </style>
+    <title>Gain and Penalty</title>
+  </head>
+  <body>
+    <div class="group-19125">
+      <div class="group-14">
+        <img class="star" src="../static/images/star0.svg" />
+        <img class="rectangle-29" src="../static/images/rectangle-290.svg" />
+      </div>
+
+      <div class="gain-amount">
+        Gain Amount: <span class="value">₹{{ result.gain }}</span>
+      </div>
+      <div class="penalty-amount">
+        Penalty Amount: <span class="value">₹{{ result.penalty }}</span>
+      </div>
+      <div class="net-gain-loss">
+        Net Gain/Loss: <span class="value">₹{{ result.net_gain }}</span>
+      </div>
+
+      <div class="ani-progress-bar">
+        <div class="info-bar">
+          <div class="help-text-dev">
+            <div class="_33">Bank: ₹{{ result.bank }}</div>
+          </div>
+          <div class="help-text-dev2">
+            <div class="_33">Round: {{ result.round }}</div>
+          </div>
+        </div>
+        <div class="ani-progress-bar-single">
+          <div class="progress-bar">
+            <div class="progressbar-size">
+              <div
+                class="rectangle-2"
+                style="width: {{ (result.round / 100) * 100 }}%;"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Auto redirect after 2.5 seconds
+      setTimeout(() => {
+        const round = {{ result.round }};
+        if (round >= 100) {
+          window.location.href = "/final";
+        } else {
+          window.location.href = "/deck_option";
+        }
+      }, 500);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+body {
+    width: 375px; 
+    height: 667px; 
+    margin: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+  }
+
+.main{
+    background: linear-gradient(
+        to left,
+        rgba(122, 122, 122, 0),
+        rgba(122, 122, 122, 0)
+      ),
+      linear-gradient(
+        180deg,
+        rgba(77, 81, 178, 1) 0%,
+        rgba(69, 73, 161, 1) 8.500000089406967%,
+        rgba(61, 64, 141, 1) 20.999999344348907%,
+        rgba(45, 47, 104, 1) 77.5066614151001%,
+        rgba(38, 40, 87, 1) 88.99999856948853%,
+        rgba(33, 35, 76, 1) 100%
+      );
+    border-radius: 21px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    height: 667px;
+    position: relative;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+  .group-14 {
+    flex-shrink: 0;
+    width: 572px;
+    height: 818px;
+    position: relative;
+  }
+  .star {
+    width: 71.01%;
+    height: 84.32%;
+    position: relative;
+    right: 28.99%;
+    left: 0%;
+    bottom: 0%;
+  
+    overflow: visible;
+  }
+  .rectangle-29 {
+    width: 56.53%;
+    height: 35.74%;
+    position: relative;
+    right: 24.4%;
+    left: 27%;
+    bottom: 70%;
+    transform: translate(-63.73px, -165.8px);
+    overflow: visible;
+  }
+
+  
+.radar-container {
+    max-width: 100%;
+    padding: 20px;
+    height: 90%;
+    position: absolute;
+    top: 8.82%;
+  }
+  
+  .chart-box {
+    background: rgb(143 146 201 / 8%);
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: inset -2px 20px 20px 11px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    align-self: stretch;
+    flex: 1;
+    position: relative;
+  }
+  
+  .heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-align: center;
+    font-family: "MontserratAlternates-SemiBold", sans-serif;
+  }
+  
+  canvas#deckRadarChart {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .summary-text {
+    margin-top: 24px;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 500;
+    text-align: center;
+    font-family: "MontserratAlternates-SemiBold", sans-serif;
+  }

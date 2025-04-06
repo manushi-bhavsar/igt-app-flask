@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static\css\vars.css">
+  <link rel="stylesheet" href="../static\css\style_instruction.css">
+  <script  src="../static\js\script1.js" defer></script>
+  
+  
+  <style>
+   a,
+   button,
+   input,
+   select,
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+       border: none;
+       text-decoration: none;
+       background: none;
+   
+       -webkit-font-smoothing: antialiased;
+   }
+   
+   menu, ol, ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+   }
+   </style>
+  <title>main</title>
+</head>
+<body>
+  <div class="gambling-task">
+    <div class="group-14">
+      <img class="star" src="../static\images\star0.svg" />
+      <img class="rectangle-29" src="../static\images\rectangle-290.svg" />
+    </div>
+    <div class="iowa-gambling-task">IOWA GAMBLING TASK</div>
+      <div class="instructions">
+        Instructions
+        <br />
+      </div>
+      <div
+        class="in-this-task-you-play-a-gambling-game-you-need-to-choose-one-of-four-buttons-a-b-c-or-d-with-the-mouse-each-time-you-can-win-some-money-but-you-may-sometimes-also-have-to-pay-a-fee-to-the-bank-after-each-trial-you-need-to-collect-your-money-which-will-adjust-your-part-of-money-you-start-with-a-loan-of-rs-2000-there-are-100-trials-taking-5-minutes-or-so-go-on-until-it-stops-and-see-how-much-you-can-make-on-top-the-loan-of-rs-2000">
+        <span>
+          <span>
+            In this task, you play a “gambling” game. You need to choose one of
+            four buttons (A, B, C, or D) with the mouse.
+            <br />
+            <br />
+            Each time, you can win some money, but you may sometimes also have to
+            pay a fee to the bank. After each trial, you need to collect your
+            money, which will adjust your part of money.
+            <br />
+            <br />
+            You start with a loan of Rs
+          </span>
+          <span>
+            2000.
+            <br />
+          </span>
+          <span>
+            <br />
+            There are
+          </span>
+          <span>
+            100
+          </span>
+          <span>
+            trials (taking 5 minutes or so).
+            <br />
+            <br />
+            Go on until it stops and see how much you can make on top the loan of
+            Rs 2000.
+          </span>
+        </span>
+      </div>
+      <a href="{{ url_for('button_page') }}">
+        <div class="button-style-2-shadow">
+        <div class="button">play now</div>
+      </div></a>
+  </div>
+  
+</body>
+</html>

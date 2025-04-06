@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Iowa Gambling Task - Choose a Deck" />
+    <link rel="stylesheet" href="../static/css/style_deck.css" />
+
+    <style>
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        background: none;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      menu,
+      ol,
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .button {
+        cursor: pointer;
+      }
+    </style>
+
+    <title>Choose a Deck</title>
+  </head>
+  <body>
+    <div class="choose-the-options">
+      <div class="group-14">
+        <img class="star" src="../static/images/star0.svg" />
+        <img class="rectangle-29" src="../static/images/rectangle-290.svg" />
+      </div>
+
+      <div class="choose-a-deck">Choose A Deck</div>
+      <div class="round">Round: <span id="round-display">--</span></div>
+      <div class="bank">Bank: ₹<span id="bank-display">--</span></div>
+
+      <div class="group-19121">
+        <div class="button-style-2-shadow">
+          <div class="button" data-deck>A</div>
+        </div>
+        <div class="button-style-2-shadow3">
+          <div class="button" data-deck>B</div>
+        </div>
+        <div class="button-style-2-shadow2">
+          <div class="button" data-deck>C</div>
+        </div>
+        <div class="button-style-2-shadow4">
+          <div class="button" data-deck>D</div>
+        </div>
+      </div> 
+    </div>
+
+    <script>
+      document.querySelectorAll("[data-deck]").forEach(button => {
+        button.addEventListener("click", () => {
+          const deck = button.textContent.trim();
+          chooseDeck(deck);
+        });
+      });
+    
+      function chooseDeck(deck) {
+        fetch("/choose_deck", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ deck: deck })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            alert(data.error);
+          } else {
+            // Update bank and round on page
+            document.getElementById("bank-display").textContent = data.bank;
+            document.getElementById("round-display").textContent = data.round;
+    
+            // Navigate to gain_loss screen
+            window.location.href = data.redirect;
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Something went wrong! Check console.");
+        });
+      }
+    
+      // Optional: update bank & round if passed via Jinja2
+      window.onload = function () {
+        const bank = "{{ bank }}";
+        const round = "{{ round }}";
+        if (bank !== "--") document.getElementById("bank-display").textContent = bank;
+        if (round !== "--") document.getElementById("round-display").textContent = round;
+      };
+    </script>
+    
+
+   
+
+  </body>
+</html>
